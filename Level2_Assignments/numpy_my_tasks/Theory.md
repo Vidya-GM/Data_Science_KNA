@@ -209,6 +209,104 @@ Normal distribution (VERY IMPORTANT)
     b = a[1:4].copy()
     Now changes won’t affect original.
 
-Boolean Indexing Returns a Copy, Not a View
+    * Boolean Indexing Returns a Copy, Not a View
+
+### Part 4: Boolean Masking (Deep Dive)
+
+    Filter data without loops
+    Update data conditionally
+    Combine multiple conditions
+    Think in data rules, not if-statemens
+
+1️⃣ What Is Boolean Masking?
+
+    A boolean mask is an array of True / False values used to:
+        - Select data
+        - Modify data
+    
+    arr = np.array([10, 20, 30, 40, 50])
+    mask = arr > 25
+
+    print(mask)         [False False  True  True  True]
+    print(arr[mask])    [30 40 50]
+
+2️⃣ Real-World Example: Salary Filtering
+
+    salaries = np.array([25000, 40000, 55000, 70000])
+    high_salary = salaries > 50000
+    print(salaries[high_salary])
+
+3️⃣ Modifying Values Using Mask
+
+    Give bonus to low salaries
+    salaries[salaries < 50000] *= 1.10
+    print(salaries)
+
+**No loops. Fully vectorized.**
+
+4️⃣ Multiple Conditions (&, |, ~)
+
+    **Important rule:**
+    Use &, |, ~
+    NOT and, or, not
+
+    Example:
+
+    - AND condition
+    ages = np.array([18, 25, 30, 40, 55])
+    working_age = (ages >= 18) & (ages <= 60)
+    print(ages[working_age])
+
+    - OR Condition
+    young_or_old = (ages < 20) | (ages > 50)
+    print(ages[young_or_old])
+
+    - NOT Condition
+    not_working = ~(ages >= 18)
+    print(ages[not_working])
+
+5️⃣ Boolean Masking on 2D Arrays
+    data = np.array([
+        [22, 30000],
+        [28, 45000],
+        [35, 60000],
+        [40, 80000]
+    ])
+
+    Filter rows where salary > 50000
+        high_income = data[data[:, 1] > 50000]
+        print(high_income)
+
+    Increase salary for age > 30
+        data[data[:, 0] > 30, 1] *= 1.05
+        print(data)
+
+6️⃣ np.where() (Very Useful)
+
+    Conditional selection
+        arr = np.array([10, 20, 30, 40])
+        result = np.where(arr > 25, arr * 2, arr)
+        print(result)
+
+    Meaning:
+        IF arr > 25 → multiply by 2  
+        ELSE → keep original
+
+7️⃣ Why Boolean Masking Beats Loops
+
+*Loop approach:*
+
+    for i in range(len(arr)):
+        if arr[i] > 25:
+            arr[i] *= 2
+
+
+✅ NumPy approach:
+
+    arr[arr > 25] *= 2
+    ✔ Faster
+    ✔ Cleaner
+    ✔ Less error-prone
+
 
 
