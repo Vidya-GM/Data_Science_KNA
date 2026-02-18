@@ -139,7 +139,7 @@ Normal distribution (VERY IMPORTANT)
 
     arr[start : stop : step]
     print(arr[1:4])     # elements at index 1,2,3
-    print(arr[:3])      # from start
+    print(arr[:3])      # from start, elements at index 0, 1. 2
     print(arr[::2])     # every 2nd element
 
     *Stop index is excluded
@@ -307,6 +307,49 @@ Normal distribution (VERY IMPORTANT)
     ✔ Faster
     ✔ Cleaner
     ✔ Less error-prone
+
+### Part 5:
+
+    Perform math on entire arrays at once
+    Understand broadcasting rules
+    Eliminate loops from real-world code
+
+1️⃣ Vectorized Operations (Core NumPy Idea)
+
+    ✅ NumPy way (Vectorized)
+    import numpy as np
+
+    prices = np.array([100, 200, 300])
+    new_prices = prices * 1.10
+
+2️⃣ Element-wise Math Operations
+
+    arr = np.array([1, 2, 3, 4])
+
+    print(arr + 10)     # add
+    print(arr * 2)      # multiply
+    print(arr ** 2)     # power
+    print(np.sqrt(arr)) # square root
+
+3️⃣ Broadcasting (🔥 VERY IMPORTANT 🔥)
+    
+**What is Broadcasting?**
+- Broadcasting allows NumPy to perform operations on arrays of different shapes.
+- If the added array has shape (1, n) → applied to each row
+- If the added array has shape (n, 1) → applied to each column
+
+1. Example 1: Scalar + Array
+    arr = np.array([10, 20, 30])
+    print(arr + 5)
+2. # Example 2: Row-wise operation
+    data = np.array([
+        [10, 20, 30],
+        [40, 50, 60]
+    ])
+
+    print(data + np.array([1, 2, 3]))
+
+
 
 
 
