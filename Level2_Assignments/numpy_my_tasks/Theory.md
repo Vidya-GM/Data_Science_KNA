@@ -349,6 +349,37 @@ Normal distribution (VERY IMPORTANT)
 
     print(data + np.array([1, 2, 3]))
 
+9️⃣ Key ideas to remember (VERY IMPORTANT)
+
+- ✔ axis=0 → column-wise statistics
+- ✔ means and stds are per feature
+- ✔ Broadcasting applies them to every row
+- ✔ (data - mean) / std is standard normalization
+
+### Part 6 NumPy Aggregations & axis
+
+    1️⃣ Basic Aggregations (NO axis yet)
+
+    Ex: data (rows = employees, columns = [age, salary, experience])
+    data = np.array([
+    [25, 50000, 2],
+    [30, 60000, 5],
+    [35, 70000, 8],
+    [40, 80000, 12]
+    ], dtype=float)
+
+    Numpy flattens the array, and perform operation on all values
+
+    data.sum()  --- sum of all values of data
+    data.mean() --- mean of all values of data
+    data.min() --- min of all values of data
+    data.max() --- max of all values of data
+
+- Column-wise Aggregation (axis=0) -- **stats per feature(per-column)**
+- Row-wise Aggregation (axis=1) -- **stats per row/per employee data**
+- argmax & argmin -- **Practical**
+        
+
 
 
 
